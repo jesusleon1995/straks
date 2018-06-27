@@ -95,38 +95,38 @@ public:
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
 
-        consensus.nRuleChangeActivationThreshold = 9576; 
-        consensus.nMinerConfirmationWindow = 10080;  
+        consensus.nRuleChangeActivationThreshold = 9576;
+        consensus.nMinerConfirmationWindow = 10080;
 
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1514764800;
-        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nOverrideMinerConfirmationWindow = 1; 
-        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nOverrideRuleChangeActivationThreshold = 1; 
+        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nOverrideMinerConfirmationWindow = 1;
+        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nOverrideRuleChangeActivationThreshold = 1;
 
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1462060800;
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1514764800;
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nOverrideMinerConfirmationWindow = 1; 
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nOverrideRuleChangeActivationThreshold = 1; 
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nOverrideMinerConfirmationWindow = 1;
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nOverrideRuleChangeActivationThreshold = 1;
 
         // Deployment of SegWit (BIP141, BIP143, and BIP147)
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].bit = 1;
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 1496275200;
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1514764800;
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nOverrideMinerConfirmationWindow = 1; 
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nOverrideRuleChangeActivationThreshold = 1; 
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nOverrideMinerConfirmationWindow = 1;
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nOverrideRuleChangeActivationThreshold = 1;
 
         // Deployment of SegWit2x
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT2X].bit = 4;
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT2X].nStartTime = 1496275200; 
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT2X].nTimeout = 1514764800; 
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT2X].nOverrideMinerConfirmationWindow = 1; 
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT2X].nOverrideRuleChangeActivationThreshold = 1; 
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT2X].nStartTime = 1496275200;
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT2X].nTimeout = 1514764800;
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT2X].nOverrideMinerConfirmationWindow = 1;
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT2X].nOverrideRuleChangeActivationThreshold = 1;
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0000000000000000000000000000000000000000000000001773c78ab15e45cc");
+        consensus.nMinimumChainWork = uint256S("0x00"); // 0000000000000000000000000000000000000000000000001773c78ab15e45cc
 
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0x0");
@@ -159,11 +159,7 @@ NEW **mainnet** merkle root: 15343d9e3cfff44854ec63cc588d5a1ed6ea971085c2be97acb
         assert(consensus.hashGenesisBlock == uint256S("00000df14d859c4b3219d93978bcf02afc123d2344a2ed39033e1208948aa7c0"));
         assert(genesis.hashMerkleRoot == uint256S("15343d9e3cfff44854ec63cc588d5a1ed6ea971085c2be97acb0ea22c0e94fc4"));
 
-        vSeeds.push_back(CDNSSeedData("sm001.alphaqub.com", "sm001.alphaqub.com"));
-        vSeeds.push_back(CDNSSeedData("sm002.alphaqub.com", "sm002.alphaqub.com"));
-        vSeeds.push_back(CDNSSeedData("sm003.alphaqub.com", "sm003.alphaqub.com"));
-        vSeeds.push_back(CDNSSeedData("sm004.alphaqub.com", "sm004.alphaqub.com"));
-        vSeeds.push_back(CDNSSeedData("sm005.alphaqub.com", "sm005.alphaqub.com"));
+        vSeeds.push_back(CDNSSeedData("banq.online", "seed1.banq.online"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,63);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,5);
@@ -180,18 +176,11 @@ NEW **mainnet** merkle root: 15343d9e3cfff44854ec63cc588d5a1ed6ea971085c2be97acb
 
         checkpointData = (CCheckpointData) {
             {
-                {     0, uint256S("00000df14d859c4b3219d93978bcf02afc123d2344a2ed39033e1208948aa7c0")},
-                { 19760, uint256S("000000000008cdaee7a7cc3e8e5336ce2426eb7079f9a43a4dbf15ac8c08cbec")},
-                { 34000, uint256S("00000000008fa092d7379523824d65470e1f62afdd9e4efe225b2a80461c16a1")},
-                { 50400, uint256S("00000000003c5729841f6d3f44d267e6be7e6b9a7cd4c9b2480a396f22e7561e")},
-                { 94858, uint256S("000000000003b195d823ee34f2ffa36933e4696fa845508e0fa9238e0dbb9718")},
-                { 136201, uint256S("00000000000def1328cef45871f0cd91dabd28dc5ba117535cbcee19eebdf79c")},
-                { 160285, uint256S("00000000000147b96ecc7ab3248dcbabd87b2193bf045750fce80db89465b338")},
-                { 229445, uint256S("0000000000633a2bd9ff75e6c485912688bc4099e494c40c4c65316f4daddaf0")}
+                {     0, uint256S("00000df14d859c4b3219d93978bcf02afc123d2344a2ed39033e1208948aa7c0")}
             }
         };
 
-        // treasury payment adresses 
+        // treasury payment adresses
         vTreasuryRewardAddress = {
             "3K3bPrW5h7DYEMp2RcXawTCXajcm4ZU9Zh",
             "33Ssxmn3ehVMgyxgegXhpLGSBpubPjLZQ6",
@@ -234,7 +223,7 @@ public:
         consensus.nPowMaxAdjustUp = 23.7; // Zawy adjustment: 1- 1/(1+.31)x100 = 23.7
 
         consensus.nPowTargetTimespan = 1 * 60; //1 minutes
-        consensus.nPowTargetSpacing = 10; //seconds 
+        consensus.nPowTargetSpacing = 10; //seconds
 
         consensus.fPowD106SwitchHeight = 30;
 
@@ -243,35 +232,35 @@ public:
         consensus.fPowAllowDigishieldMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = false;
 
-        consensus.nRuleChangeActivationThreshold = 6480; 
+        consensus.nRuleChangeActivationThreshold = 6480;
         consensus.nMinerConfirmationWindow = 8640; //1 day
 
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1514764800;
-        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nOverrideMinerConfirmationWindow = 1; 
-        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nOverrideRuleChangeActivationThreshold = 1; 
+        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nOverrideMinerConfirmationWindow = 1;
+        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nOverrideRuleChangeActivationThreshold = 1;
 
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1462060800;
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1514764800;
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nOverrideMinerConfirmationWindow = 1; 
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nOverrideRuleChangeActivationThreshold = 1; 
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nOverrideMinerConfirmationWindow = 1;
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nOverrideRuleChangeActivationThreshold = 1;
 
         // Deployment of SegWit (BIP141, BIP143, and BIP147)
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].bit = 1;
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 1496275200;
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1514764800;
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nOverrideMinerConfirmationWindow = 1; 
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nOverrideRuleChangeActivationThreshold = 1; 
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nOverrideMinerConfirmationWindow = 1;
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nOverrideRuleChangeActivationThreshold = 1;
 
         // Deployment of SegWit2x
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT2X].bit = 4;
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT2X].nStartTime = 1496275200; 
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT2X].nTimeout = 1514764800; 
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT2X].nOverrideMinerConfirmationWindow = 1; 
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT2X].nOverrideRuleChangeActivationThreshold = 1; 
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT2X].nStartTime = 1496275200;
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT2X].nTimeout = 1514764800;
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT2X].nOverrideMinerConfirmationWindow = 1;
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT2X].nOverrideRuleChangeActivationThreshold = 1;
 
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0000000000000000000000000000000000000000000000000000006002adb673");
@@ -281,10 +270,10 @@ public:
 
         consensus.MasternodePaymentStartHeight = 1440;
 
-        pchMessageStart[0] = 0x2a;
-        pchMessageStart[1] = 0x1e;
-        pchMessageStart[2] = 0xd5;
-        pchMessageStart[3] = 0xd1;
+        pchMessageStart[0] = 0x3b;
+        pchMessageStart[1] = 0x2f;
+        pchMessageStart[2] = 0xe6;
+        pchMessageStart[3] = 0xe2;
         nDefaultPort = 7565;
         nPruneAfterHeight = 1000;
 
@@ -302,8 +291,6 @@ NEW **testnet** merkle root: 15343d9e3cfff44854ec63cc588d5a1ed6ea971085c2be97acb
         assert(genesis.hashMerkleRoot == uint256S("15343d9e3cfff44854ec63cc588d5a1ed6ea971085c2be97acb0ea22c0e94fc4"));
 
         // nodes with support for servicebits filtering should be at the top
-        vSeeds.push_back(CDNSSeedData("st001.radixpi.com", "st001.radixpi.com"));
-        vSeeds.push_back(CDNSSeedData("st002.radixpi.com", "st002.radixpi.com"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,127);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,19);
@@ -321,9 +308,6 @@ NEW **testnet** merkle root: 15343d9e3cfff44854ec63cc588d5a1ed6ea971085c2be97acb
         checkpointData = (CCheckpointData) {
             {
                 {     0, uint256S("000000cd747bd0b653e1fe417b60c1d9e990600cf2ff193404ea12c3ecb348b4")},
-                {119692, uint256S("000004d943ed36053076a62b20cc7bec6a8a4c66ed1f6a6e88deeca015ff555a")},
-                {195182, uint256S("0000001cbc01c2d26da194f44fd63e35eb87e65642c8611c93e9c14a2f2c0a0d")},
-                {232597, uint256S("0000023d86e2181d63c6db4cb82e5889737b824efd71904f03fe76898a941211")},
             }
         };
 
@@ -349,8 +333,8 @@ public:
         strNetworkID = "regtest";
         consensus.BIP34Height = 0;
         consensus.BIP34Hash = uint256S("000002db0642636c786f756062dd7a92f35a2be1665816f8bfa33111ae902b37");
-        consensus.BIP65Height = 0; 
-        consensus.BIP66Height = 0; 
+        consensus.BIP65Height = 0;
+        consensus.BIP66Height = 0;
         consensus.powLimit = uint256S("00000fffff000000000000000000000000000000000000000000000000000000");
         consensus.BIP102HeightDelta = 0;
 
@@ -369,35 +353,35 @@ public:
         consensus.fPowAllowDigishieldMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = true;
 
-        consensus.nRuleChangeActivationThreshold = 5400; 
-        consensus.nMinerConfirmationWindow = 7200; 
+        consensus.nRuleChangeActivationThreshold = 5400;
+        consensus.nMinerConfirmationWindow = 7200;
 
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1514764800;
-        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nOverrideMinerConfirmationWindow = 1; 
-        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nOverrideRuleChangeActivationThreshold = 1; 
+        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nOverrideMinerConfirmationWindow = 1;
+        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nOverrideRuleChangeActivationThreshold = 1;
 
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1462060800;
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1514764800;
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nOverrideMinerConfirmationWindow = 1; 
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nOverrideRuleChangeActivationThreshold = 1; 
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nOverrideMinerConfirmationWindow = 1;
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nOverrideRuleChangeActivationThreshold = 1;
 
         // Deployment of SegWit (BIP141, BIP143, and BIP147)
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].bit = 1;
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nStartTime = 1496275200;
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1514764800;
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nOverrideMinerConfirmationWindow = 1; 
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nOverrideRuleChangeActivationThreshold = 1; 
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nOverrideMinerConfirmationWindow = 1;
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nOverrideRuleChangeActivationThreshold = 1;
 
         // Deployment of SegWit2x
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT2X].bit = 4;
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT2X].nStartTime = 1496275200; 
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT2X].nTimeout = 1514764800; 
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT2X].nOverrideMinerConfirmationWindow = 1; 
-        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT2X].nOverrideRuleChangeActivationThreshold = 1; 
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT2X].nStartTime = 1496275200;
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT2X].nTimeout = 1514764800;
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT2X].nOverrideMinerConfirmationWindow = 1;
+        consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT2X].nOverrideRuleChangeActivationThreshold = 1;
 
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x0");
@@ -507,11 +491,10 @@ CScript CChainParams::GetTreasuryRewardScriptAtHeight(int nHeight) const {
     assert(address.IsScript());
     CScriptID scriptID = boost::get<CScriptID>(address.Get()); // Get() returns a boost variant
     CScript script = CScript() << OP_HASH160 << ToByteVector(scriptID) << OP_EQUAL;
-    return script; 
+    return script;
 }
 
 std::string CChainParams::GetTreasuryRewardAddressAtIndex(int i) const {
     assert(i >= 0 && i < vTreasuryRewardAddress.size());
     return vTreasuryRewardAddress[i];
 }
-
